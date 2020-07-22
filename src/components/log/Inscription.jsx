@@ -110,7 +110,7 @@ export default function Inscription() {
                 fullWidth
                 id="username"
                 name="username"
-                laber="Pseudo"
+                label="Pseudo"
                 value={username}
                 autoFocus
                 onChange={e => setUsername(e.target.value)}
@@ -124,7 +124,7 @@ export default function Inscription() {
                 fullWidth
                 id="email"
                 name="email"
-                laber="Adresse email"
+                label="Adresse email"
                 value={email}
                 autoFocus
                 onChange={e => setEmail(e.target.value)}
@@ -138,7 +138,7 @@ export default function Inscription() {
                 fullWidth
                 id="password"
                 name="password"
-                laber="Mot de passe"
+                label="Mot de passe"
                 value={password}
                 autoFocus
                 onChange={e => setPassword(e.target.value)}
