@@ -19,12 +19,12 @@ export default function Portfolio() {
           .then(res => res.data)
           .then(res => setTrip(res))
           .catch(e => {
-            alert(`Erreur lors de la récupération de l'image ${e.message}`);
+            alert(`Erreur lors de la récupération des images ${e.message}`);
           });
       })
       .catch(e => {
         console.log(e);
-        alert(`Erreur lors de la récupération de l'image ${e.message}`);
+        alert(`Erreur lors de la récupération des images ${e.message}`);
       });
   };
 
