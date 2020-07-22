@@ -3,7 +3,18 @@ import axios from 'axios';
 
 export default function Portfolio() {
   const [name, setName] = useState('');
-  const [trips, setTrip] = useState([]);
+  const [searchTrips, setSearchTrip] = useState([]);
+  const [trips, setTrips] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:4000/trip`)
+      .then(res => res.data)
+      .then(res => setTrips(res))
+      .catch(e => {
+        alert(`Erreur lors de la récupération des voyages ${e.message}`);
+      });
+  }, []);
 
   const handleClickSearch = () => {
     const tripName = name;
@@ -17,7 +28,7 @@ export default function Portfolio() {
         axios
           .get(`http://localhost:4000/photo?${idTrip}`, idTrip)
           .then(res => res.data)
-          .then(res => setTrip(res))
+          .then(res => setSearchTrip(res))
           .catch(e => {
             alert(`Erreur lors de la récupération des images ${e.message}`);
           });
@@ -37,10 +48,18 @@ export default function Portfolio() {
         Valider
       </button>
       <div>
-        {trips.map(({ id_trip, name, picture_url: pictureUrl }) => (
+        {searchTrips.map(({ id_trip, name, picture_url: pictureUrl }) => (
           <div>
             <h4>{name}</h4>
-            <img src={pictureUrl} alt="name" key={id_trip} />
+            <img src={pictureUrl} alt={name} key={id_trip} />
+          </div>
+        ))}
+      </div>
+      <div>
+        {trips.map(({ id_trip, name, picture_url: pictureUrl }) => (
+          <div key={id_trip}>
+            <h4>{name}</h4>
+            <img src={pictureUrl} alt={name} />
           </div>
         ))}
       </div>
