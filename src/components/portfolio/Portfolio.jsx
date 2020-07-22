@@ -42,10 +42,21 @@ export default function Portfolio() {
 
   return (
     <div className="Portfolio-container">
+      <img
+        src="https://zupimages.net/up/20/30/ag32.jpg"
+        alt="Photo by Braden Jarvis on Unsplash"
+        className="image-header"
+      />
       <div className="Portfolio-section2">
         <div className="search-section">
           <label htmlFor="Recherche">
-            <input type="text" onChange={e => setName(e.target.value)} value={name} />
+            Rechercher un voyage
+            <input
+              type="text"
+              onChange={e => setName(e.target.value)}
+              value={name}
+              className="search-input"
+            />
           </label>
           <button type="button" onClick={() => handleClickSearch()}>
             Valider

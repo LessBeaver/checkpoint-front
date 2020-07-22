@@ -1,6 +1,11 @@
-.navbar-container {
+.Navigation {
   background-color: transparent !important;
   color: black !important;
   display: flex !important;
   flex-direction: row !important;
+  font-size: 1.3rem;
+}
+
+.NavLink {
+  color: black !important;
 }

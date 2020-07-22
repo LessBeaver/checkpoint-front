@@ -48,6 +48,12 @@ export default function App() {
           <></>
         )} */}
       <Switch>
+        <Route path="/connexion" exact>
+          <Connexion setUserData={setUserData} />
+        </Route>
+        <Route path="/inscription" exact>
+          <Inscription setUserData={setUserData} />
+        </Route>
         <Route path="/accueil" exact component={Accueil} />
         <Route path="/portfolio" exact component={Portfolio} />
       </Switch>
