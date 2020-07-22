@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import './Portfolio.css';
 
 export default function Portfolio() {
   const [name, setName] = useState('');
@@ -40,28 +41,34 @@ export default function Portfolio() {
   };
 
   return (
-    <div>
-      <label htmlFor="Recherche">
-        <input type="text" onChange={e => setName(e.target.value)} value={name} />
-      </label>
-      <button type="button" onClick={() => handleClickSearch()}>
-        Valider
-      </button>
-      <div>
-        {searchTrips.map(({ id_trip, name, picture_url: pictureUrl }) => (
+    <div className="Portfolio-container">
+      <div className="Portfolio-section2">
+        <div className="search-section">
+          <label htmlFor="Recherche">
+            <input type="text" onChange={e => setName(e.target.value)} value={name} />
+          </label>
+          <button type="button" onClick={() => handleClickSearch()}>
+            Valider
+          </button>
+        </div>
+        <div className="results-section">
           <div>
-            <h4>{name}</h4>
-            <img src={pictureUrl} alt={name} key={id_trip} />
+            {searchTrips.map(({ id_trip, name, picture_url: pictureUrl }) => (
+              <div>
+                <h4>{name}</h4>
+                <img src={pictureUrl} alt={name} key={id_trip} />
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
-      <div>
-        {trips.map(({ id_trip, name, picture_url: pictureUrl }) => (
-          <div key={id_trip}>
-            <h4>{name}</h4>
-            <img src={pictureUrl} alt={name} />
+          <div>
+            {trips.map(({ id_trip, name, picture_url: pictureUrl }) => (
+              <div key={id_trip} className="container-trip">
+                <img src={pictureUrl} alt={name} className="image-trip" />
+                <div className="trip-titre">{name}</div>
+              </div>
+            ))}
           </div>
-        ))}
+        </div>
       </div>
     </div>
   );
