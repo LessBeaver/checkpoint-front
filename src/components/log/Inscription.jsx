@@ -42,8 +42,9 @@ export default function Inscription() {
 
   const handleClickUser = e => {
     e.preventDefault();
-    const url = `/connexion/user`;
+    const url = `http://localhost:4000/register/user`;
     const formData = {
+      username,
       email,
       password
     };
@@ -72,18 +73,18 @@ export default function Inscription() {
             icon: "error",
             showCancelButton: false,
             showConfirmButton: false,
-            text: "Mauvais format de données, try again 😕",
+            text: "Mauvais format de données, try again",
             timer: 1000,
             backdrop: "rgba(0,0,0,0.5)"
           });
         };
       })
-      .catch(() => {
+      .catch(error => {
         Swal.fire({
-          icon: "error",
+          icon: error,
           showCancelButton: false,
           showConfirmButton: false,
-          text: "Eh non, données invalides 😕",
+          text: "Eh non, données invalides",
           timer: 1000,
           backdrop: "rgba(0,0,0,0.5)"
         });
