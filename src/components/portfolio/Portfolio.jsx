@@ -60,7 +60,7 @@ export default function Portfolio() {
               </div>
             ))}
           </div>
-          <div>
+          <div className="trip-results">
             {trips.map(({ id_trip, name, picture_url: pictureUrl }) => (
               <div key={id_trip} className="container-trip">
                 <img src={pictureUrl} alt={name} className="image-trip" />
