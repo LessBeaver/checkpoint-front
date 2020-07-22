@@ -42,58 +42,9 @@ export default function Connexion() {
 
   const handleClickUser = e => {
     e.preventDefault();
-    const url = `/connexion/user`;
+    const url = `http://localhost:4000/signin/user`;
     const formData = {
-      email,
-      password
-    };
-    axios
-      .post(url, formData)
-      .then(response => {
-        if (response.status === 200) {
-          /*           const userData = {
-            ...response.data,
-            type: 'A'
-          };
-          window.localStorage.setItem('user', JSON.stringify(userData));
-          setUserData(userData); */
-          Swal.fire({
-            icon: "success",
-            showCancelButton: false,
-            showConfirmButton: false,
-            text: "Eh coucou !",
-            timer: 1000,
-            backdrop: "rgba(0,0,0,0.5)"
-          });
-          return history.push("/accueil");
-        }
-        return () => {
-          Swal.fire({
-            icon: "error",
-            showCancelButton: false,
-            showConfirmButton: false,
-            text: "Mauvais format de données, try again 😕",
-            timer: 1000,
-            backdrop: "rgba(0,0,0,0.5)"
-          });
-        };
-      })
-      .catch(() => {
-        Swal.fire({
-          icon: "error",
-          showCancelButton: false,
-          showConfirmButton: false,
-          text: "Eh non, données invalides 😕",
-          timer: 1000,
-          backdrop: "rgba(0,0,0,0.5)"
-        });
-      });
-  };
-
-  const handleClickAdmin = e => {
-    e.preventDefault();
-    const url = `/connexion/admin`;
-    const formData = {
+      username,
       email,
       password
     };
@@ -148,7 +99,7 @@ export default function Connexion() {
           <LockOutlinedIcon />
         </Avatar>
         <Typography component="h1" variant="h5">
-          M'inscrire
+          Me connecter
         </Typography>
         <form className={classes.form} onSubmit={e => handleClickUser(e)}>
           <Grid container spacing={2}>
@@ -201,16 +152,10 @@ export default function Connexion() {
             variant="contained"
             color="primary"
             className={classes.submit}
+            onClick={e => handleClickUser(e)}
           >
-            Valider l'inscription
+            Connectez-moi
           </Button>
-          <Grid container justify="flex-end">
-            <Grid item>
-              <Link href="/connexion" variant="body2">
-                Déjà inscrit ? Connectez-vous !
-              </Link>
-            </Grid>
-          </Grid>
         </form>
       </div>
     </Container>
