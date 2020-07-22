@@ -32,7 +32,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function Connexion() {
+export default function Connexion({ setUserData }) {
   const classes = useStyles();
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -51,12 +51,12 @@ export default function Connexion() {
       .post(url, formData)
       .then(response => {
         if (response.status === 200) {
-          /*           const userData = {
+          const userData = {
             ...response.data,
-            type: 'A'
+            type: "A"
           };
-          window.localStorage.setItem('user', JSON.stringify(userData));
-          setUserData(userData); */
+          window.localStorage.setItem("user", JSON.stringify(userData));
+          setUserData(userData);
           Swal.fire({
             icon: "success",
             showCancelButton: false,
