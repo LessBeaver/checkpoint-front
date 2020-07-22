@@ -1,17 +1,18 @@
-import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Navigation from "./components/main/Navigation";
-import Accueil from "./components/main/Accueil";
-import Inscription from "./components/log/Inscription";
-import Connexion from "./components/log/Connexion";
-import _ from "lodash";
-import "./App.css";
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Navigation from './components/main/Navigation';
+import Accueil from './components/main/Accueil';
+import Inscription from './components/log/Inscription';
+import Connexion from './components/log/Connexion';
+import Portfolio from './components/portfolio/Portfolio';
+import _ from 'lodash';
+import './App.css';
 
 export default function App() {
   const [userData, setUserData] = useState({});
 
   useEffect(() => {
-    const a = JSON.parse(localStorage.getItem("user"));
+    const a = JSON.parse(localStorage.getItem('user'));
     if (!_.isEqual(a, userData)) {
       setUserData(a);
     }
@@ -48,6 +49,7 @@ export default function App() {
         )} */}
       <Switch>
         <Route path="/accueil" exact component={Accueil} />
+        <Route path="/portfolio" exact component={Portfolio} />
       </Switch>
     </Router>
   );
