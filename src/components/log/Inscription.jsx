@@ -1,17 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import Avatar from "@material-ui/core/Avatar";
 import Button from "@material-ui/core/Button";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import TextField from "@material-ui/core/TextField";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox";
 import Link from "@material-ui/core/Link";
 import Grid from "@material-ui/core/Grid";
-import Box from "@material-ui/core/Box";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import Container from "@material-ui/core/Container";
+import { useHistory } from "react-router-dom";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 const useStyles = makeStyles(theme => ({
   paper: {
@@ -35,6 +35,60 @@ const useStyles = makeStyles(theme => ({
 
 export default function Inscription() {
   const classes = useStyles();
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const history = useHistory();
+
+  const handleClickUser = e => {
+    e.preventDefault();
+    const url = `/connexion/user`;
+    const formData = {
+      email,
+      password
+    };
+    axios
+      .post(url, formData)
+      .then(response => {
+        if (response.status === 200) {
+          /*           const userData = {
+            ...response.data,
+            type: 'A'
+          };
+          window.localStorage.setItem('user', JSON.stringify(userData));
+          setUserData(userData); */
+          Swal.fire({
+            icon: "success",
+            showCancelButton: false,
+            showConfirmButton: false,
+            text: "Eh coucou !",
+            timer: 1000,
+            backdrop: "rgba(0,0,0,0.5)"
+          });
+          return history.push("/accueil");
+        }
+        return () => {
+          Swal.fire({
+            icon: "error",
+            showCancelButton: false,
+            showConfirmButton: false,
+            text: "Mauvais format de données, try again 😕",
+            timer: 1000,
+            backdrop: "rgba(0,0,0,0.5)"
+          });
+        };
+      })
+      .catch(() => {
+        Swal.fire({
+          icon: "error",
+          showCancelButton: false,
+          showConfirmButton: false,
+          text: "Eh non, données invalides 😕",
+          timer: 1000,
+          backdrop: "rgba(0,0,0,0.5)"
+        });
+      });
+  };
 
   return (
     <Container component="main" maxWidth="xs">
@@ -46,52 +100,48 @@ export default function Inscription() {
         <Typography component="h1" variant="h5">
           M'inscrire
         </Typography>
-        <form className={classes.form} noValidate>
+        <form className={classes.form} onSubmit={e => handleClickUser(e)}>
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
-                autoComplete="fname"
-                name="firstName"
+                autoComplete="username"
                 variant="outlined"
                 required
                 fullWidth
-                id="firstName"
-                label="First Name"
+                id="username"
+                name="username"
+                laber="Pseudo"
+                value={username}
                 autoFocus
+                onChange={e => setUsername(e.target.value)}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
-                variant="outlined"
-                required
-                fullWidth
-                id="lastName"
-                label="Last Name"
-                name="lastName"
-                autoComplete="lname"
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
+                autoComplete="email"
                 variant="outlined"
                 required
                 fullWidth
                 id="email"
-                label="Email Address"
                 name="email"
-                autoComplete="email"
+                laber="Adresse email"
+                value={email}
+                autoFocus
+                onChange={e => setEmail(e.target.value)}
               />
             </Grid>
             <Grid item xs={12}>
               <TextField
+                autoComplete="password"
                 variant="outlined"
                 required
                 fullWidth
-                name="password"
-                label="Password"
-                type="password"
                 id="password"
-                autoComplete="current-password"
+                name="password"
+                laber="Mot de passe"
+                value={password}
+                autoFocus
+                onChange={e => setPassword(e.target.value)}
               />
             </Grid>
           </Grid>
