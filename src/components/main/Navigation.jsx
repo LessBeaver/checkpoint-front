@@ -10,7 +10,7 @@ import {
   NavbarText
 } from "reactstrap";
 
-const Navbar = props => {
+export default function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
@@ -40,6 +40,4 @@ const Navbar = props => {
       </Navbar>
     </div>
   );
-};
-
-export default Example;
+}
