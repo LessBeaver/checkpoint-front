@@ -46,6 +46,28 @@ export default function NAvigation() {
                 aria-haspopup="true"
                 aria-expanded="false"
               >
+                Se connecter
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/connexion">
+                  Connexion
+                </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="/inscription">
+                  Inscription
+                </a>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
                 Recherche
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
