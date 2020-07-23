@@ -42,6 +42,7 @@ export default function AddPhoto() {
   const [image, setImage] = useState('');
   const [name, setName] = useState('');
   const [tripName, setTripName] = useState('');
+  const [idTrip, setIdTrip] = useState('');
 
   useEffect(() => {
     axios
@@ -55,24 +56,22 @@ export default function AddPhoto() {
 
   const handleClickImage = e => {
     e.preventDefault();
-    const getTripName = tripName;
     const formData = {
       picture_url: image,
       name: name
     };
     axios
-      .get(`http://localhost:4000/trip/${getTripName}`)
-      .then(res => res.data.id_trip)
+      .get(`http://localhost:4000/trip/${tripName}`)
+      .then(res => setIdTrip(res))
       .then(res => {
         axios
-          .post(`http://localhost:4000/photo/${res}`, formData)
+          .post(`http://localhost:4000/photo/${idTrip}`, formData)
           .then(res => res.data)
           .catch(e => {
             alert(`Erreur lors de la récupération des images ${e.message}`);
           });
       })
       .catch(e => {
-        console.log(e);
         alert(`Erreur lors de la récupération des images ${e.message}`);
       });
   };
