@@ -15,7 +15,7 @@ import { useEffect } from 'react';
 
 const useStyles = makeStyles(theme => ({
   root: {
-    widht: '100%'
+    width: '100%'
   },
   paper: {
     marginTop: theme.spacing(8),
@@ -38,10 +38,10 @@ const useStyles = makeStyles(theme => ({
 
 export default function AddPhoto() {
   const classes = useStyles();
+  const [trips, setTrips] = useState([]);
   const [image, setImage] = useState('');
   const [name, setName] = useState('');
   const [tripName, setTripName] = useState('');
-  const [trips, setTrips] = useState([]);
 
   useEffect(() => {
     axios
@@ -55,11 +55,24 @@ export default function AddPhoto() {
 
   const handleClickImage = e => {
     e.preventDefault();
+    const getTripName = tripName;
+    const formData = {
+      picture_url: image,
+      name: name
+    };
     axios
-      .post(`http://localhost:4000/photo/${tripName}`)
-      .then(res => res.data)
-      .then(res => setTripName(res))
+      .get(`http://localhost:4000/trip/${getTripName}`)
+      .then(res => res.data.id_trip)
+      .then(res => {
+        axios
+          .post(`http://localhost:4000/photo/${res}`, formData)
+          .then(res => res.data)
+          .catch(e => {
+            alert(`Erreur lors de la récupération des images ${e.message}`);
+          });
+      })
       .catch(e => {
+        console.log(e);
         alert(`Erreur lors de la récupération des images ${e.message}`);
       });
   };
@@ -88,19 +101,6 @@ export default function AddPhoto() {
               ))}
             </Select>
           </FormControl>
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            id="name"
-            label="Nom du voyage"
-            name="name"
-            autoComplete="name"
-            autoFocus
-            value={tripName}
-            onChange={e => setTripName(e.target.value)}
-          />
           <TextField
             variant="outlined"
             margin="normal"
