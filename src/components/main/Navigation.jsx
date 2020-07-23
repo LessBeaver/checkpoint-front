@@ -32,11 +32,6 @@ export default function Navigation() {
               </a>
             </li>
             <li class="nav-item">
-              <a class="nav-link NavLink" href="/a-propos">
-                A propos
-              </a>
-            </li>
-            <li class="nav-item">
               <a class="nav-link NavLink" href="/gestionnaire">
                 Gestionnaire
               </a>
@@ -44,7 +39,7 @@ export default function Navigation() {
             <li class="nav-item dropdown">
               <a
                 class="nav-link dropdown-toggle NavLink"
-                href="#"
+                href="/se-connecter"
                 id="navbarDropdown"
                 role="button"
                 data-toggle="dropdown"
