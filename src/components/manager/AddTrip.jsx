@@ -29,14 +29,14 @@ const useStyles = makeStyles(theme => ({
 
 export default function AddTrip() {
   const classes = useStyles();
-  const [images, setImages] = useState('');
-  const [names, setNames] = useState('');
+  const [image, setImages] = useState('');
+  const [name, setNames] = useState('');
 
   const handleClickImage = e => {
     e.preventDefault();
-    const url = 'http://localhost:4000/photo';
+    const url = 'http://localhost:4000/trip';
     axios
-      .post(url, { picture_url: image })
+      .post(url, { picture_url: image, name })
       .then(res => res.data)
       .then(res => setImages(res))
       .catch(e => {
@@ -62,7 +62,7 @@ export default function AddTrip() {
             name="name"
             autoComplete="name"
             autoFocus
-            value={names}
+            value={name}
             onChange={e => setNames(e.target.value)}
           />
           <TextField
@@ -75,7 +75,7 @@ export default function AddTrip() {
             name="picture_url"
             autoComplete="picture_url"
             autoFocus
-            value={images}
+            value={image}
             onChange={e => setImages(e.target.value)}
           />
           <Button
