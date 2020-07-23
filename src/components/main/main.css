@@ -9,3 +9,24 @@
 .NavLink {
   color: black !important;
 }
+
+/* ABOUT */
+
+.image {
+  max-height: 650px;
+  width: 100%;
+  background-image: url('https://images.unsplash.com/photo-1562473579-e69695fcd4ee?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=552&q=80');
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.image-perso {
+  z-index: 50;
+  display: block;
+  position: relative;
+  margin-top: -500px;
+  height: 350px;
+  width: auto;
+}

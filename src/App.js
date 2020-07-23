@@ -5,6 +5,7 @@ import Accueil from './components/main/Accueil';
 import Inscription from './components/log/Inscription';
 import Connexion from './components/log/Connexion';
 import Portfolio from './components/portfolio/Portfolio';
+import About from './components/main/About';
 import _ from 'lodash';
 import './App.css';
 
@@ -56,6 +57,7 @@ export default function App() {
         </Route>
         <Route path="/accueil" exact component={Accueil} />
         <Route path="/portfolio" exact component={Portfolio} />
+        <Route path="/a-propos" exact component={About} />
       </Switch>
     </Router>
   );
