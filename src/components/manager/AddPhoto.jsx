@@ -42,7 +42,6 @@ export default function AddPhoto() {
   const [image, setImage] = useState('');
   const [name, setName] = useState('');
   const [tripName, setTripName] = useState('');
-  const [idTrip, setIdTrip] = useState([]);
 
   useEffect(() => {
     axios
@@ -69,12 +68,12 @@ export default function AddPhoto() {
           .then(res => res.data)
           .catch(e => {
             console.log(e);
-            alert(`Erreur lors de la récupération des images 1 ${e.message}`);
+            alert(`Erreur lors de l'envoi de l'image' ${e.message}`);
           });
       })
       .catch(e => {
         console.log(e);
-        alert(`Erreur lors de la récupération des images 2 ${e.message}`);
+        alert(`Erreur catch ${e.message}`);
       });
   };
 
