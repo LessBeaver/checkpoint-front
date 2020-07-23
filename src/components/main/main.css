@@ -1,3 +1,5 @@
+/* NAVIGATION */
+
 .Navigation {
   background-color: transparent !important;
   color: black !important;
@@ -29,4 +31,41 @@
   margin-top: -500px;
   height: 350px;
   width: auto;
+}
+
+/* ACCUEIL */
+
+.accueil-container {
+  width: 100%;
+}
+
+.accueil-container-text-header {
+  position: inherit;
+  text-align: center;
+  color: white;
+}
+
+.accueil-bg-header {
+  background-color: rgba(240, 143, 17, 0.8);
+  width: 100%;
+  height: 800px;
+  margin-top: -200px;
+}
+
+.accueil-svg-header {
+  background-image: url('/images/picture.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: inherit;
+  height: 100%;
+  width: 100%;
+  margin-top: 100px;
+}
+
+.accueil-titre-header {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 8.5rem;
 }
