@@ -6,6 +6,7 @@ import Inscription from './components/log/Inscription';
 import Connexion from './components/log/Connexion';
 import Portfolio from './components/portfolio/Portfolio';
 import About from './components/main/About';
+import Manager from './components/manager/Manager';
 import _ from 'lodash';
 import './App.css';
 
@@ -58,6 +59,7 @@ export default function App() {
         <Route path="/accueil" exact component={Accueil} />
         <Route path="/portfolio" exact component={Portfolio} />
         <Route path="/a-propos" exact component={About} />
+        <Route path="/gestionnaire" exact component={Manager} />
       </Switch>
     </Router>
   );

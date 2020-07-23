@@ -36,6 +36,11 @@ export default function Navigation() {
                 A propos
               </a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link NavLink" href="/gestionnaire">
+                Gestionnaire
+              </a>
+            </li>
             <li class="nav-item dropdown">
               <a
                 class="nav-link dropdown-toggle NavLink"

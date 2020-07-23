@@ -19,15 +19,12 @@ export default function Portfolio() {
 
   const handleClickSearch = () => {
     const tripName = name;
-    const idTrip = '';
-    console.log(tripName);
     axios
-      .get(`http://localhost:4000/trip?${tripName}`, tripName)
+      .get(`http://localhost:4000/trip/${tripName}`)
       .then(res => res.data.id_trip)
       .then(res => {
-        console.log(res);
         axios
-          .get(`http://localhost:4000/photo?${idTrip}`, idTrip)
+          .get(`http://localhost:4000/photo/${res}`)
           .then(res => res.data)
           .then(res => setSearchTrip(res))
           .catch(e => {
