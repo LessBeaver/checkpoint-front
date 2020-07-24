@@ -1,6 +1,7 @@
 import React from 'react';
 import About from './About';
 import './main.css';
+import './mainqueries.css';
 
 export default function Accueil() {
   return (

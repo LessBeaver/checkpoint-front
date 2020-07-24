@@ -14,7 +14,7 @@
 
 /* ABOUT */
 
-.image {
+.about-image {
   max-height: 650px;
   width: 100%;
   background-image: url('https://images.unsplash.com/photo-1562473579-e69695fcd4ee?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=552&q=80');
@@ -24,7 +24,7 @@
   background-size: cover;
 }
 
-.image-perso {
+.about-image-perso {
   z-index: 50;
   display: block;
   position: relative;
