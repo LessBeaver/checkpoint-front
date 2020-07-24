@@ -1,4 +1,4 @@
-/* @media screen and (min-width: 200px) and (max-width: 1200px) */
+/* @media screen and (min-width: 350) and (max-width: 600px) */
 
 @media screen and (min-width: 600px) and (max-width: 960px) {
   .accueil-bg-header {
@@ -41,5 +41,55 @@
   .about-image-perso {
     height: 200px;
     margin-top: -300px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .accueil-bg-header {
+    height: 300px;
+  }
+
+  .accueil-svg-header {
+    background-image: url('/images/smallpicture.png');
+    margin-top: 135px;
+  }
+
+  .accueil-titre-header {
+    display: none;
+  }
+
+  .accueil-container-secondary {
+    width: 100%;
+    margin: 30px auto;
+    flex-direction: column;
+  }
+
+  .accueil-container-secondary-image {
+    width: 100%;
+  }
+
+  .accueil-image-secondary {
+    width: -moz-available;
+    height: inherit;
+    margin: 15px;
+  }
+
+  .accueil-container-secondary-text {
+    padding: 0;
+  }
+
+  .accueil-text-secondary {
+    padding: 5px;
+    margin: 15px;
+  }
+
+  /* ABOUT */
+
+  .about-image-perso {
+    display: none;
+  }
+
+  .about-image {
+    height: 30vh;
   }
 }
