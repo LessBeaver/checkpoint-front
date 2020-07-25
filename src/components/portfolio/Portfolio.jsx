@@ -6,6 +6,7 @@ export default function Portfolio() {
   const [name, setName] = useState('');
   const [searchTrips, setSearchTrip] = useState([]);
   const [trips, setTrips] = useState([]);
+  const [id, setId] = useState('');
 
   useEffect(() => {
     axios
@@ -21,10 +22,10 @@ export default function Portfolio() {
     const tripName = name;
     axios
       .get(`http://localhost:4000/trip/${tripName}`)
-      .then(res => console.log(res.data.id_trip))
+      .then(res => setId(res.data))
       .then(res => {
         axios
-          .get(`http://localhost:4000/photo/${res}`)
+          .get(`http://localhost:4000/photo/${id}`)
           .then(res => res.data)
           .then(res => setSearchTrip(res))
           .catch(e => {
