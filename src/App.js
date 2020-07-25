@@ -8,6 +8,7 @@ import Portfolio from './components/portfolio/Portfolio';
 import About from './components/main/About';
 import Manager from './components/manager/Manager';
 import Trip from './components/portfolio/Trip';
+import Footer from './components/main/Footer';
 import _ from 'lodash';
 import './App.css';
 
@@ -63,6 +64,7 @@ export default function App() {
         <Route path="/a-propos" exact component={About} />
         <Route path="/gestionnaire" exact component={Manager} />
       </Switch>
+      <Footer />
     </Router>
   );
 }

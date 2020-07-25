@@ -36,6 +36,7 @@ export default function Accueil() {
       <div>
         <About />
       </div>
+      <div className="accueil-gap-footer" />
     </div>
   );
 }

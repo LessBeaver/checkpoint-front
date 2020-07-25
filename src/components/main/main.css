@@ -93,6 +93,19 @@
   vertical-align: middle;
 }
 
+.accueil-gap-footer {
+  height: 30vh;
+}
+
+.footer-container {
+  padding: 30px;
+  width: 100%;
+  background-image: url('https://images.unsplash.com/photo-1592838981793-f3ebf267056d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80');
+  background-repeat: no-repeat;
+  background-size: cover;
+  color: #f2f2f2;
+}
+
 @media screen and (min-width: 1200px) {
   /* NAVIGATION */
 
