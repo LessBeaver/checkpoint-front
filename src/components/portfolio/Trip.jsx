@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 
 export default function Trip() {
   const [trips, setTrip] = useState([]);
 
-  useEffect(() => {
-    const tripName = name;
+  /*   useEffect(() => {
     axios
       .get(`http://localhost:4000/trip?${tripName}`, tripName)
       .then(res => res.data)
@@ -12,7 +12,7 @@ export default function Trip() {
       .catch(e => {
         alert(`Erreur lors de la récupération du voyage ${e.message}`);
       });
-  }, []);
+  }, []); */
 
   return (
     <div>

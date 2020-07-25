@@ -7,6 +7,7 @@ import Connexion from './components/log/Connexion';
 import Portfolio from './components/portfolio/Portfolio';
 import About from './components/main/About';
 import Manager from './components/manager/Manager';
+import Trip from './components/portfolio/Trip';
 import _ from 'lodash';
 import './App.css';
 
@@ -58,6 +59,7 @@ export default function App() {
         </Route>
         <Route path="/accueil" exact component={Accueil} />
         <Route path="/portfolio" exact component={Portfolio} />
+        <Route path="/voyage" exact component={Trip} />
         <Route path="/a-propos" exact component={About} />
         <Route path="/gestionnaire" exact component={Manager} />
       </Switch>
