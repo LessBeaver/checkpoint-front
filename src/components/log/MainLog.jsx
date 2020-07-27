@@ -19,14 +19,18 @@ export default function MainLog() {
   return (
     <div>
       <div className="mainlog-image"></div>
-      <Link path="/inscription" className="mainlog-text">
-        <a className="mainlog-a" onClick={e => showInscription(e)}>
-          Inscrit-toi pour accéder au reste du site
-        </a>
-        <a className="mainlog-a" onClick={e => showConnexion(e)}>
-          Déjà inscrit ? Connecte-toi !
-        </a>
-      </Link>
+      <div path="/inscription" className="mainlog-text">
+        <div className="mainlog-link">
+          <a onClick={e => showInscription(e)} className="mainlog-a">
+            Inscrit-toi pour accéder au reste du site
+          </a>
+        </div>
+        <div className="mainlog-link">
+          <a onClick={e => showConnexion(e)} className="mainlog-a">
+            Déjà inscrit ? Connecte-toi !
+          </a>
+        </div>
+      </div>
     </div>
   );
 }

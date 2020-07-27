@@ -5,6 +5,7 @@ import TextField from '@material-ui/core/TextField';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import Swal from 'sweetalert2';
 import axios from 'axios';
 
 const useStyles = makeStyles(theme => ({
@@ -38,9 +39,26 @@ export default function AddTrip() {
     axios
       .post(url, { picture_url: image, name })
       .then(res => res.data)
-      .then(res => setImages(res))
+      .then(res => {
+        setImages(res);
+        Swal.fire({
+          icon: 'success',
+          showCancelButton: false,
+          showConfirmButton: false,
+          text: 'Voyage bien ajouté!',
+          timer: 1000,
+          backdrop: 'rgba(0,0,0,0.5)'
+        });
+      })
       .catch(e => {
-        alert(`Erreur lors de la récupération des images ${e.message}`);
+        Swal.fire({
+          icon: 'error',
+          showCancelButton: false,
+          showConfirmButton: false,
+          text: `Erreur lors de la récupération des images ${e.message}`,
+          timer: 1000,
+          backdrop: 'rgba(0,0,0,0.5)'
+        });
       });
   };
 

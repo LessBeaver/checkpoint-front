@@ -94,7 +94,6 @@ export default function Connexion({ setUserData }) {
     e.preventDefault();
     const url = `http://localhost:4000/signin/admin`;
     const formData = {
-      username,
       email,
       password
     };
@@ -157,7 +156,6 @@ export default function Connexion({ setUserData }) {
               <TextField
                 autoComplete="username"
                 variant="outlined"
-                required
                 fullWidth
                 id="username"
                 name="username"

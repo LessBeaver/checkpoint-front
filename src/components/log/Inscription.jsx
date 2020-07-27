@@ -95,7 +95,6 @@ export default function Inscription({ setUserData }) {
     e.preventDefault();
     const url = `http://localhost:4000/register/admin`;
     const formData = {
-      username,
       email,
       password
     };
@@ -158,7 +157,6 @@ export default function Inscription({ setUserData }) {
               <TextField
                 autoComplete="username"
                 variant="outlined"
-                required
                 fullWidth
                 id="username"
                 name="username"

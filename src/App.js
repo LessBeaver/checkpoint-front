@@ -31,7 +31,6 @@ export default function App() {
         <Navigation />
         {!userData ? (
           <Switch>
-            <MainLog />
             <Route path="/connexion" exact>
               <Connexion setUserData={setUserData} />
             </Route>
@@ -62,15 +61,12 @@ export default function App() {
           <></>
         )}
         <Switch>
-          <Route path="/connexion" exact>
-            <Connexion setUserData={setUserData} />
-          </Route>
-          <Route path="/inscription" exact>
-            <Inscription setUserData={setUserData} />
+          <Route path="/" exact>
+            <MainLog />
           </Route>
         </Switch>
         <Switch>
-          <Route path="/" exact component={Accueil} />
+          <Route path="/accueil" exact component={Accueil} />
         </Switch>
         <Footer />
       </Router>

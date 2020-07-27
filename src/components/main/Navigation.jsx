@@ -7,7 +7,7 @@ export default function Navigation() {
   return (
     <div>
       <nav class="navbar navbar-expand-lg navbar-light Navigation">
-        <a class="navbar-brand" href="/signin">
+        <a class="navbar-brand" href="/">
           Portfolio
         </a>
         <button
