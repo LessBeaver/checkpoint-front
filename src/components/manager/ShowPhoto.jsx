@@ -5,6 +5,7 @@ import Button from '@material-ui/core/Button';
 import Select from '@material-ui/core/Select';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import './manager.css';
 
 export default function ShowPhoto() {
   const [trips, setTrips] = useState([]);
@@ -65,12 +66,12 @@ export default function ShowPhoto() {
           Valider
         </Button>
       </form>
-      <div>
+      <div className="photo-container">
         {photos.map(({ id_trip, name, picture_url: pictureUrl }) => (
-          <div>
-            <h4>{name}</h4>
-            <img src={pictureUrl} alt={name} key={id_trip} />
-          </div>
+          <figure className="photo-card">
+            <figcaption>{name}</figcaption>
+            <img src={pictureUrl} alt={name} key={id_trip} className="photo-size" />
+          </figure>
         ))}
       </div>
     </div>
