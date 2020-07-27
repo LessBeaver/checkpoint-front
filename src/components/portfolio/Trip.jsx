@@ -1,27 +1,17 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React from 'react';
+import './Portfolio.css';
 
-export default function Trip() {
-  const [trips, setTrip] = useState([]);
-
-  /*   useEffect(() => {
-    axios
-      .get(`http://localhost:4000/trip?${tripName}`, tripName)
-      .then(res => res.data)
-      .then(res => setTrip(res))
-      .catch(e => {
-        alert(`Erreur lors de la récupération du voyage ${e.message}`);
-      });
-  }, []); */
-
+export default function Trip({ trips }) {
   return (
     <div>
-      {trips.map(({ id_trip, name, picture_url: pictureUrl }) => (
-        <div>
-          <h4>{name}</h4>
-          <img src={pictureUrl} alt="name" key={id_trip} />
-        </div>
-      ))}
+      <div className="trip-results">
+        {trips.map(({ id_trip, name, picture_url: pictureUrl }) => (
+          <div key={id_trip} className="container-trip">
+            <img src={pictureUrl} alt={name} className="image-trip" />
+            <div className="trip-titre">{name}</div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

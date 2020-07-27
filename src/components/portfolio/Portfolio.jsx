@@ -5,6 +5,7 @@ import Button from '@material-ui/core/Button';
 import Select from '@material-ui/core/Select';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Trip from './Trip';
 import './Portfolio.css';
 
 export default function Portfolio() {
@@ -83,14 +84,15 @@ export default function Portfolio() {
               </div>
             ))}
           </div>
-          <div className="trip-results">
+          {/*           <div className="trip-results">
             {trips.map(({ id_trip, name, picture_url: pictureUrl }) => (
               <div key={id_trip} className="container-trip">
                 <img src={pictureUrl} alt={name} className="image-trip" />
                 <div className="trip-titre">{name}</div>
               </div>
             ))}
-          </div>
+          </div> */}
+          <Trip trips={trips} />
         </div>
       </div>
     </div>
