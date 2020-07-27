@@ -1,3 +1,8 @@
+import MenuItem from '@material-ui/core/MenuItem';
+import InputLabel from '@material-ui/core/InputLabel';
+import FormControl from '@material-ui/core/FormControl';
+import Button from '@material-ui/core/Button';
+import Select from '@material-ui/core/Select';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './Portfolio.css';
@@ -6,7 +11,6 @@ export default function Portfolio() {
   const [name, setName] = useState('');
   const [searchTrips, setSearchTrip] = useState([]);
   const [trips, setTrips] = useState([]);
-  const [id, setId] = useState('');
 
   useEffect(() => {
     axios
@@ -18,7 +22,8 @@ export default function Portfolio() {
       });
   }, []);
 
-  const handleClickSearch = () => {
+  const handleClickSearch = e => {
+    e.preventDefault();
     axios
       .get(`http://localhost:4000/trip/${name}`)
       .then(res => res.data.id_trip)
@@ -47,27 +52,15 @@ export default function Portfolio() {
       />
       <div className="Portfolio-section2">
         <div className="search-section">
-          <label htmlFor="Recherche">
-            Rechercher un voyage
-            <input
-              type="text"
-              value={name}
-              onChange={e => setName(e.target.value)}
-              className="search-input"
-            />
-          </label>
-          <button type="button" onClick={() => handleClickSearch()}>
-            Valider
-          </button>
-          <form onSubmit={e => selectPhotos(e)}>
+          <form onSubmit={e => handleClickSearch(e)}>
             <FormControl variant="outlined">
               <InputLabel id="trip">Sélectionner un voyage</InputLabel>
               <Select
                 id="name"
                 label="Nom du voyage"
-                name="name"
-                value={nameTrip}
-                onChange={e => setNameTrip(e.target.value)}
+                value={name}
+                onChange={e => setName(e.target.value)}
+                className="search-input"
               >
                 {trips.map(({ id_trip, name }) => (
                   <MenuItem value={id_trip} key={id_trip}>
