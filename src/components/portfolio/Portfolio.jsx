@@ -22,7 +22,7 @@ export default function Portfolio() {
     const tripName = name;
     axios
       .get(`http://localhost:4000/trip/${tripName}`)
-      .then(res => setId(res.data))
+      .then(res => setId(res.data.id_trip))
       .then(res => {
         axios
           .get(`http://localhost:4000/photo/${id}`)

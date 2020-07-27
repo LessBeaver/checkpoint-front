@@ -36,12 +36,17 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function AddPhoto() {
+export default function AddPhoto({
+  setTripName,
+  setName,
+  setImage,
+  name,
+  image,
+  tripName,
+  handleClickImage
+}) {
   const classes = useStyles();
   const [trips, setTrips] = useState([]);
-  const [image, setImage] = useState('');
-  const [name, setName] = useState('');
-  const [tripName, setTripName] = useState('');
 
   useEffect(() => {
     axios
@@ -52,30 +57,6 @@ export default function AddPhoto() {
         alert(`Erreur lors de la récupération des images ${e.message}`);
       });
   }, []);
-
-  const handleClickImage = e => {
-    e.preventDefault();
-    const formData = {
-      name,
-      picture_url: image
-    };
-    axios
-      .get(`http://localhost:4000/trip/${tripName}`)
-      .then(res => res.data.id_trip)
-      .then(res => {
-        axios
-          .post(`http://localhost:4000/photo/${res}`, formData)
-          .then(res => res.data)
-          .catch(e => {
-            console.log(e);
-            alert(`Erreur lors de l'envoi de l'image' ${e.message}`);
-          });
-      })
-      .catch(e => {
-        console.log(e);
-        alert(`Erreur catch ${e.message}`);
-      });
-  };
 
   return (
     <Container component="main" maxWidth="xs">
