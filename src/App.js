@@ -10,6 +10,7 @@ import Manager from './components/manager/Manager';
 import Trip from './components/portfolio/Trip';
 import Footer from './components/main/Footer';
 import ShowTrip from './components/portfolio/ShowTrip';
+import MainLog from './components/log/MainLog';
 import _ from 'lodash';
 import './App.css';
 
@@ -53,13 +54,14 @@ export default function App() {
           <></>
         )} */}
       <Switch>
+        <Route path="/signin" exact component={MainLog} />
         <Route path="/connexion" exact>
           <Connexion setUserData={setUserData} />
         </Route>
         <Route path="/inscription" exact>
           <Inscription setUserData={setUserData} />
         </Route>
-        <Route path="/" exact component={Accueil} />
+        <Route path="/accueil" exact component={Accueil} />
         <Route path="/portfolio" exact component={Portfolio} />
         <Route path="/voyage" exact component={Trip} />
         <Route path="/voyage/:id_trip" exact component={ShowTrip} />

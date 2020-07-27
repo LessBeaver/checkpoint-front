@@ -4,7 +4,7 @@ export default function Navigation() {
   return (
     <div>
       <nav class="navbar navbar-expand-lg navbar-light Navigation">
-        <a class="navbar-brand" href="/">
+        <a class="navbar-brand" href="/signin">
           Portfolio
         </a>
         <button
@@ -22,7 +22,7 @@ export default function Navigation() {
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-              <a class="nav-link NavLink" href="/">
+              <a class="nav-link NavLink" href="/accueil">
                 Accueil<span class="sr-only">(current)</span>
               </a>
             </li>

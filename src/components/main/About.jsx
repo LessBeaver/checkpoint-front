@@ -7,7 +7,11 @@ export default function About() {
     <div>
       <div className="about-image"></div>
       <div>
-        <img src="https://zupimages.net/up/20/30/64ch.jpg" alt="" className="about-image-perso" />
+        <img
+          src="https://images.unsplash.com/photo-1507823782123-27db7f9fd196?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=750&q=80"
+          alt=""
+          className="about-image-perso"
+        />
       </div>
     </div>
   );
