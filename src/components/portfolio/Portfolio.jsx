@@ -7,6 +7,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Trip from './Trip';
 import './Portfolio.css';
+import './portfolioqueries.css';
 
 export default function Portfolio() {
   const [name, setName] = useState('');
@@ -54,7 +55,7 @@ export default function Portfolio() {
       <div className="Portfolio-section2">
         <div className="search-section">
           <form onSubmit={e => handleClickSearch(e)}>
-            <FormControl variant="outlined">
+            <FormControl variant="outlined" className="search-select">
               <InputLabel id="trip">Sélectionner un voyage</InputLabel>
               <Select
                 id="name"
