@@ -43,6 +43,18 @@ export default function ShowPhoto() {
       });
   };
 
+  const deletePhoto = id_photo => {
+    const idPhoto = id_photo;
+    axios
+      .delete(`http://localhost:4000/photo/${idPhoto}`)
+      .then(res => res.data)
+      .then(res => {
+        let deleteArr = photos;
+        deleteArr = deleteArr.filter(photo => photo.id_photo !== idPhoto);
+        setPhotos(deleteArr);
+      });
+  };
+
   return (
     <div>
       <form onSubmit={e => selectPhotos(e)}>
@@ -67,10 +79,11 @@ export default function ShowPhoto() {
         </Button>
       </form>
       <div className="photo-container">
-        {photos.map(({ id_trip, name, picture_url: pictureUrl }) => (
+        {photos.map(({ id_photo, name, picture_url: pictureUrl }) => (
           <figure className="photo-card">
             <figcaption>{name}</figcaption>
-            <img src={pictureUrl} alt={name} key={id_trip} className="photo-size" />
+            <img src={pictureUrl} alt={name} className="photo-size" key={id_photo} />
+            <Button onClick={() => deletePhoto(id_photo)}>Supprimer</Button>
           </figure>
         ))}
       </div>
