@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import AddTrip from './AddTrip';
 import AddPhoto from './AddPhoto';
 import ShowPhoto from './ShowPhoto';
@@ -8,6 +8,8 @@ export default function Manager() {
   const [name, setName] = useState('');
   const [image, setImage] = useState('');
   const [tripName, setTripName] = useState('');
+  const [getTrip, setGetTrip] = useState('');
+  const [showPhotos, setShowPhotos] = useState([]);
 
   const handleClickImage = e => {
     e.preventDefault();
@@ -21,7 +23,7 @@ export default function Manager() {
       .then(res => {
         axios
           .post(`http://localhost:4000/photo/${res}`, formData)
-          .then(res => res.data)
+          .then(res => setGetTrip(res.data.id_trip))
           .catch(e => {
             console.log(e);
             alert(`Erreur lors de l'envoi de l'image' ${e.message}`);
@@ -32,6 +34,18 @@ export default function Manager() {
         alert(`Erreur catch ${e.message}`);
       });
   };
+
+  useEffect(() => {
+    console.log(getTrip);
+    axios
+      .get(`http://localhost:4000/photo/${getTrip}`)
+      .then(res => res.data)
+      .then(res => setShowPhotos(res))
+      .catch(e => {
+        console.log(e);
+        alert(`Erreur lors de la récupération des photos' ${e.message}`);
+      });
+  }, []);
 
   return (
     <div>
@@ -45,7 +59,7 @@ export default function Manager() {
         tripName={tripName}
         handleClickImage={handleClickImage}
       />
-      <ShowPhoto tripName={tripName} />
+      <ShowPhoto showPhotos={showPhotos} />
     </div>
   );
 }

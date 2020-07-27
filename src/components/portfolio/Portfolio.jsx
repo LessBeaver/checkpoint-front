@@ -19,22 +19,21 @@ export default function Portfolio() {
   }, []);
 
   const handleClickSearch = () => {
-    const tripName = name;
     axios
-      .get(`http://localhost:4000/trip/${tripName}`)
-      .then(res => setId(res.data.id_trip))
+      .get(`http://localhost:4000/trip/${name}`)
+      .then(res => res.data.id_trip)
       .then(res => {
         axios
-          .get(`http://localhost:4000/photo/${id}`)
-          .then(res => res.data)
+          .get(`http://localhost:4000/photo/${res}`)
           .then(res => setSearchTrip(res))
           .catch(e => {
-            alert(`Erreur lors de la récupération des images ${e.message}`);
+            console.log(e);
+            alert(`Erreur lors de l'envoi de l'image' ${e.message}`);
           });
       })
       .catch(e => {
         console.log(e);
-        alert(`Erreur lors de la récupération des images ${e.message}`);
+        alert(`Erreur catch ${e.message}`);
       });
   };
 
