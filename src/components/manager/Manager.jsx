@@ -9,7 +9,6 @@ export default function Manager() {
   const [image, setImage] = useState('');
   const [tripName, setTripName] = useState('');
   const [getTrip, setGetTrip] = useState('');
-  const [showPhotos, setShowPhotos] = useState([]);
 
   const handleClickImage = e => {
     e.preventDefault();
@@ -35,18 +34,6 @@ export default function Manager() {
       });
   };
 
-  useEffect(() => {
-    console.log(getTrip);
-    axios
-      .get(`http://localhost:4000/photo/${getTrip}`)
-      .then(res => res.data)
-      .then(res => setShowPhotos(res))
-      .catch(e => {
-        console.log(e);
-        alert(`Erreur lors de la récupération des photos' ${e.message}`);
-      });
-  }, []);
-
   return (
     <div>
       <AddTrip />
@@ -59,7 +46,7 @@ export default function Manager() {
         tripName={tripName}
         handleClickImage={handleClickImage}
       />
-      <ShowPhoto showPhotos={showPhotos} />
+      <ShowPhoto />
     </div>
   );
 }

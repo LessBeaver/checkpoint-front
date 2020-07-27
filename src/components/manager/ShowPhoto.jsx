@@ -6,7 +6,7 @@ import Select from '@material-ui/core/Select';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-export default function ShowPhoto({ showPhotos }) {
+export default function ShowPhoto() {
   const [trips, setTrips] = useState([]);
   const [nameTrip, setNameTrip] = useState([]);
   const [photos, setPhotos] = useState([]);
@@ -65,15 +65,6 @@ export default function ShowPhoto({ showPhotos }) {
           Valider
         </Button>
       </form>
-
-      <div>
-        {showPhotos.map(({ id_trip, name, picture_url: pictureUrl }) => (
-          <div>
-            <h4>{name}</h4>
-            <img src={pictureUrl} alt={name} key={id_trip} />
-          </div>
-        ))}
-      </div>
       <div>
         {photos.map(({ id_trip, name, picture_url: pictureUrl }) => (
           <div>
