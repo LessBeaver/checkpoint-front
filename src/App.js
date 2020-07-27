@@ -9,6 +9,7 @@ import About from './components/main/About';
 import Manager from './components/manager/Manager';
 import Trip from './components/portfolio/Trip';
 import Footer from './components/main/Footer';
+import ShowTrip from './components/portfolio/ShowTrip';
 import _ from 'lodash';
 import './App.css';
 
@@ -58,9 +59,10 @@ export default function App() {
         <Route path="/inscription" exact>
           <Inscription setUserData={setUserData} />
         </Route>
-        <Route path="/accueil" exact component={Accueil} />
+        <Route path="/" exact component={Accueil} />
         <Route path="/portfolio" exact component={Portfolio} />
         <Route path="/voyage" exact component={Trip} />
+        <Route path="/voyage/:id_trip" exact component={ShowTrip} />
         <Route path="/a-propos" exact component={About} />
         <Route path="/gestionnaire" exact component={Manager} />
       </Switch>
