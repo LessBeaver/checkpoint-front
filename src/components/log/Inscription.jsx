@@ -91,56 +91,6 @@ export default function Inscription({ setUserData }) {
       });
   };
 
-  const handleClickAdmin = e => {
-    e.preventDefault();
-    const url = `http://localhost:4000/register/admin`;
-    const formData = {
-      email,
-      password
-    };
-    axios
-      .post(url, formData)
-      .then(response => {
-        if (response.status === 200) {
-          const userData = {
-            ...response.data,
-            type: 'A'
-          };
-          window.localStorage.setItem('user', JSON.stringify(userData));
-          setUserData(userData);
-          Swal.fire({
-            icon: 'success',
-            showCancelButton: false,
-            showConfirmButton: false,
-            text: 'Eh coucou !',
-            timer: 1000,
-            backdrop: 'rgba(0,0,0,0.5)'
-          });
-          return history.push('/accueil');
-        }
-        return () => {
-          Swal.fire({
-            icon: 'error',
-            showCancelButton: false,
-            showConfirmButton: false,
-            text: 'Mauvais format de données, try again 😕',
-            timer: 1000,
-            backdrop: 'rgba(0,0,0,0.5)'
-          });
-        };
-      })
-      .catch(error => {
-        Swal.fire({
-          icon: error,
-          showCancelButton: false,
-          showConfirmButton: false,
-          text: 'Eh non, données invalides 😕',
-          timer: 1000,
-          backdrop: 'rgba(0,0,0,0.5)'
-        });
-      });
-  };
-
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -204,16 +154,6 @@ export default function Inscription({ setUserData }) {
             onSubmit={e => handleClickUser(e)}
           >
             Valider l'inscription
-          </Button>
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-            onSubmit={e => handleClickAdmin(e)}
-          >
-            Je veux être un admin
           </Button>
           <Grid container justify="flex-end">
             <Grid item>

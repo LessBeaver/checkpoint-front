@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import AddTrip from './AddTrip';
 import AddPhoto from './AddPhoto';
+import Swal from 'sweetalert2';
 import ShowPhoto from './ShowPhoto';
 import axios from 'axios';
 import './manager.css';
@@ -24,10 +25,26 @@ export default function Manager() {
       .then(res => {
         axios
           .post(`http://localhost:4000/photo/${res}`, formData)
-          .then(res => setGetTrip(res.data.id_trip))
+          .then(res => {
+            setGetTrip(res.data.id_trip);
+            Swal.fire({
+              icon: 'success',
+              showCancelButton: false,
+              showConfirmButton: false,
+              text: 'Voyage bien ajouté!',
+              timer: 1000,
+              backdrop: 'rgba(0,0,0,0.5)'
+            });
+          })
           .catch(e => {
-            console.log(e);
-            alert(`Erreur lors de l'envoi de l'image' ${e.message}`);
+            Swal.fire({
+              icon: 'error',
+              showCancelButton: false,
+              showConfirmButton: false,
+              text: `Erreur lors de la récupération des images ${e.message}`,
+              timer: 1000,
+              backdrop: 'rgba(0,0,0,0.5)'
+            });
           });
       })
       .catch(e => {

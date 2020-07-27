@@ -52,14 +52,10 @@ export default function App() {
         ) : (
           <></>
         )}
-        {userData && userData.type === 'A' ? (
-          <Switch>
-            <Route path="/gestionnaire" exact component={Manager} />
-            <Route path="/portfolio" exact component={Portfolio} />
-          </Switch>
-        ) : (
-          <></>
-        )}
+        <Switch>
+          <Route path="/gestionnaire" exact component={Manager} />
+          <Route path="/portfolio" exact component={Portfolio} />
+        </Switch>
         <Switch>
           <Route path="/" exact>
             <MainLog />

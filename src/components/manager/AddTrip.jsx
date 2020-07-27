@@ -40,7 +40,6 @@ export default function AddTrip() {
       .post(url, { picture_url: image, name })
       .then(res => res.data)
       .then(res => {
-        setImages(res);
         Swal.fire({
           icon: 'success',
           showCancelButton: false,
@@ -49,6 +48,7 @@ export default function AddTrip() {
           timer: 1000,
           backdrop: 'rgba(0,0,0,0.5)'
         });
+        setImages(res);
       })
       .catch(e => {
         Swal.fire({

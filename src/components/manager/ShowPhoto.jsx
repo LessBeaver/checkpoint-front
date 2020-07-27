@@ -8,6 +8,7 @@ import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import Swal from 'sweetalert2';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './manager.css';
@@ -82,6 +83,14 @@ export default function ShowPhoto() {
         let deleteArr = photos;
         deleteArr = deleteArr.filter(photo => photo.id_photo !== idPhoto);
         setPhotos(deleteArr);
+        Swal.fire({
+          icon: 'success',
+          showCancelButton: false,
+          showConfirmButton: false,
+          text: 'Votre image a bien été supprimé !',
+          timer: 1000,
+          backdrop: 'rgba(0,0,0,0.5)'
+        });
       });
   };
 

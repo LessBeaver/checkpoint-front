@@ -40,27 +40,6 @@ export default function Navigation() {
             ) : (
               <></>
             )}
-            {user && user.type === 'A' ? (
-              <>
-                <li class="nav-item active">
-                  <a class="nav-link NavLink" href="/accueil">
-                    Accueil<span class="sr-only">(current)</span>
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link NavLink" href="/portfolio">
-                    Galerie
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link NavLink" href="/gestionnaire">
-                    Gestionnaire
-                  </a>
-                </li>
-              </>
-            ) : (
-              <></>
-            )}
             {!user ? (
               <>
                 <li class="nav-item dropdown">

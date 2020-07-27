@@ -8,6 +8,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import { makeStyles } from '@material-ui/core/styles';
+import Swal from 'sweetalert2';
 import Container from '@material-ui/core/Container';
 import axios from 'axios';
 import { useEffect } from 'react';
@@ -51,9 +52,26 @@ export default function AddPhoto({
     axios
       .get(`http://localhost:4000/trip`)
       .then(res => res.data)
-      .then(res => setTrips(res))
+      .then(res => {
+        setTrips(res);
+        Swal.fire({
+          icon: 'success',
+          showCancelButton: false,
+          showConfirmButton: false,
+          text: 'Image ajoutée!',
+          timer: 1000,
+          backdrop: 'rgba(0,0,0,0.5)'
+        });
+      })
       .catch(e => {
-        alert(`Erreur lors de la récupération des images ${e.message}`);
+        Swal.fire({
+          icon: 'error',
+          showCancelButton: false,
+          showConfirmButton: false,
+          text: `Erreur lors de la récupération de l'image ${e.message}`,
+          timer: 1000,
+          backdrop: 'rgba(0,0,0,0.5)'
+        });
       });
   }, []);
 
@@ -101,7 +119,7 @@ export default function AddPhoto({
               required
               fullWidth
               id="picture_url"
-              label="Image de présentation"
+              label="Adresse url"
               name="picture_url"
               autoComplete="picture_url"
               autoFocus
