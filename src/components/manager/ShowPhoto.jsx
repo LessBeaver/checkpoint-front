@@ -29,7 +29,8 @@ export default function ShowPhoto({ showPhotos }) {
       .then(res => {
         axios
           .get(`http://localhost:4000/photo/${res}`)
-          .then(res => setPhotos(res))
+          .then(response => response.data)
+          .then(response => setPhotos(response))
           .catch(e => {
             console.log(e);
             alert(`Erreur lors de l'envoi de l'image' ${e.message}`);

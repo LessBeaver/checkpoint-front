@@ -25,7 +25,8 @@ export default function Portfolio() {
       .then(res => {
         axios
           .get(`http://localhost:4000/photo/${res}`)
-          .then(res => setSearchTrip(res))
+          .then(response => response.data)
+          .then(response => setSearchTrip(response))
           .catch(e => {
             console.log(e);
             alert(`Erreur lors de l'envoi de l'image' ${e.message}`);
@@ -50,14 +51,35 @@ export default function Portfolio() {
             Rechercher un voyage
             <input
               type="text"
-              onChange={e => setName(e.target.value)}
               value={name}
+              onChange={e => setName(e.target.value)}
               className="search-input"
             />
           </label>
           <button type="button" onClick={() => handleClickSearch()}>
             Valider
           </button>
+          <form onSubmit={e => selectPhotos(e)}>
+            <FormControl variant="outlined">
+              <InputLabel id="trip">Sélectionner un voyage</InputLabel>
+              <Select
+                id="name"
+                label="Nom du voyage"
+                name="name"
+                value={nameTrip}
+                onChange={e => setNameTrip(e.target.value)}
+              >
+                {trips.map(({ id_trip, name }) => (
+                  <MenuItem value={id_trip} key={id_trip}>
+                    {name}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+            <Button type="submit" fullWidth variant="contained" color="primary">
+              Valider
+            </Button>
+          </form>
         </div>
         <div className="results-section">
           <div>
