@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import ShowTrip from './ShowTrip';
 import axios from 'axios';
 import './Portfolio.css';
@@ -22,10 +23,12 @@ export default function Trip({ trips }) {
     <div>
       <div className="trip-results">
         {trips.map(({ id_trip, name, picture_url: pictureUrl }) => (
-          <div key={id_trip} className="container-trip" onClick={() => handleShowTrip(id_trip)}>
-            <img src={pictureUrl} alt={name} className="image-trip" />
-            <div className="trip-titre">{name}</div>
-          </div>
+          <Link to={`/voyage/${id_trip}`}>
+            <div key={id_trip} className="container-trip" onClick={() => handleShowTrip(id_trip)}>
+              <img src={pictureUrl} alt={name} className="image-trip" />
+              <div className="trip-titre">{name}</div>
+            </div>
+          </Link>
         ))}
       </div>
     </div>

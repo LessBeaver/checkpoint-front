@@ -4,6 +4,7 @@ import AddPhoto from './AddPhoto';
 import ShowPhoto from './ShowPhoto';
 import axios from 'axios';
 import './manager.css';
+import './managerqueries.css';
 
 export default function Manager() {
   const [name, setName] = useState('');

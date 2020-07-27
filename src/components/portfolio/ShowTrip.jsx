@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import '../manager/manager.css';
-import axios from 'axios';
+// import axios from 'axios';
 
 const ShowTrip = getPhotos => {
   return (
