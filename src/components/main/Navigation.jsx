@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import UserContext from '../UserContext';
 
 export default function Navigation() {
+  const user = useContext(UserContext);
+
   return (
     <div>
       <nav class="navbar navbar-expand-lg navbar-light Navigation">
@@ -21,43 +24,71 @@ export default function Navigation() {
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link NavLink" href="/accueil">
-                Accueil<span class="sr-only">(current)</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link NavLink" href="/portfolio">
-                Portfolio
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link NavLink" href="/gestionnaire">
-                Gestionnaire
-              </a>
-            </li>
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle NavLink"
-                href="/se-connecter"
-                id="navbarDropdown"
-                role="button"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                Se connecter
-              </a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item NavLink" href="/connexion">
-                  Connexion
-                </a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item NavLink" href="/inscription">
-                  Inscription
-                </a>
-              </div>
-            </li>
+            {user && user.type === 'C' ? (
+              <>
+                <li class="nav-item active">
+                  <a class="nav-link NavLink" href="/accueil">
+                    Accueil<span class="sr-only">(current)</span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link NavLink" href="/portfolio">
+                    Portfolio
+                  </a>
+                </li>
+              </>
+            ) : (
+              <></>
+            )}
+            {user && user.type === 'A' ? (
+              <>
+                <li class="nav-item active">
+                  <a class="nav-link NavLink" href="/accueil">
+                    Accueil<span class="sr-only">(current)</span>
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link NavLink" href="/portfolio">
+                    Portfolio
+                  </a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link NavLink" href="/gestionnaire">
+                    Gestionnaire
+                  </a>
+                </li>
+              </>
+            ) : (
+              <></>
+            )}
+            {!user ? (
+              <>
+                <li class="nav-item dropdown">
+                  <a
+                    class="nav-link dropdown-toggle NavLink"
+                    href="/se-connecter"
+                    id="navbarDropdown"
+                    role="button"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                  >
+                    Se connecter
+                  </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item NavLink" href="/connexion">
+                      Connexion
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item NavLink" href="/inscription">
+                      Inscription
+                    </a>
+                  </div>
+                </li>
+              </>
+            ) : (
+              <></>
+            )}
             <li class="nav-item dropdown">
               <a
                 class="nav-link dropdown-toggle NavLink"
