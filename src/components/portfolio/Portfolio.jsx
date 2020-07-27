@@ -71,7 +71,13 @@ export default function Portfolio() {
                 ))}
               </Select>
             </FormControl>
-            <Button type="submit" fullWidth variant="contained" color="primary">
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              className="portfolio-button"
+            >
               Valider
             </Button>
           </form>
