@@ -90,6 +90,57 @@ export default function Connexion({ setUserData }) {
       });
   };
 
+  const handleClickAdmin = e => {
+    e.preventDefault();
+    const url = `http://localhost:4000/signin/admin`;
+    const formData = {
+      username,
+      email,
+      password
+    };
+    axios
+      .post(url, formData)
+      .then(response => {
+        if (response.status === 200) {
+          const userData = {
+            ...response.data,
+            type: 'A'
+          };
+          window.localStorage.setItem('user', JSON.stringify(userData));
+          setUserData(userData);
+          Swal.fire({
+            icon: 'success',
+            showCancelButton: false,
+            showConfirmButton: false,
+            text: 'Eh coucou !',
+            timer: 1000,
+            backdrop: 'rgba(0,0,0,0.5)'
+          });
+          return history.push('/accueil');
+        }
+        return () => {
+          Swal.fire({
+            icon: 'error',
+            showCancelButton: false,
+            showConfirmButton: false,
+            text: 'Mauvais format de données, try again 😕',
+            timer: 1000,
+            backdrop: 'rgba(0,0,0,0.5)'
+          });
+        };
+      })
+      .catch(() => {
+        Swal.fire({
+          icon: 'error',
+          showCancelButton: false,
+          showConfirmButton: false,
+          text: 'Eh non, données invalides 😕',
+          timer: 1000,
+          backdrop: 'rgba(0,0,0,0.5)'
+        });
+      });
+  };
+
   return (
     <Container component="main" maxWidth="xs">
       <CssBaseline />
@@ -154,6 +205,16 @@ export default function Connexion({ setUserData }) {
             onClick={e => handleClickUser(e)}
           >
             Connectez-moi
+          </Button>
+          <Button
+            type="submit"
+            fullWidth
+            variant="contained"
+            color="primary"
+            className={classes.submit}
+            onClick={e => handleClickAdmin(e)}
+          >
+            Je suis un admin
           </Button>
         </form>
       </div>

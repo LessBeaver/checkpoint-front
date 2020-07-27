@@ -36,7 +36,7 @@ export default function App() {
               <Connexion setUserData={setUserData} />
             </Route>
             <Route path="/inscription" exact>
-              <Inscription />
+              <Inscription setUserData={setUserData} />
             </Route>
           </Switch>
         ) : (
@@ -53,9 +53,10 @@ export default function App() {
         ) : (
           <></>
         )}
-        {userData && userData.type === 'U' ? (
+        {userData && userData.type === 'A' ? (
           <Switch>
             <Route path="/gestionnaire" exact component={Manager} />
+            <Route path="/portfolio" exact component={Portfolio} />
           </Switch>
         ) : (
           <></>
@@ -67,11 +68,9 @@ export default function App() {
           <Route path="/inscription" exact>
             <Inscription setUserData={setUserData} />
           </Route>
-          <Route path="/accueil" exact component={Accueil} />
-          <Route path="/portfolio" exact component={Portfolio} />
-          <Route path="/voyage" exact component={Trip} />
-          <Route path="/voyage/:id_trip" exact component={ShowTrip} />
-          <Route path="/a-propos" exact component={About} />
+        </Switch>
+        <Switch>
+          <Route path="/" exact component={Accueil} />
         </Switch>
         <Footer />
       </Router>

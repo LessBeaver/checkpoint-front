@@ -24,7 +24,7 @@ export default function Navigation() {
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav mr-auto">
-            {user && user.type === 'C' ? (
+            {user && user.type === 'U' ? (
               <>
                 <li class="nav-item active">
                   <a class="nav-link NavLink" href="/accueil">
@@ -49,7 +49,7 @@ export default function Navigation() {
                 </li>
                 <li class="nav-item">
                   <a class="nav-link NavLink" href="/portfolio">
-                    Portfolio
+                    Galerie
                   </a>
                 </li>
                 <li class="nav-item">
