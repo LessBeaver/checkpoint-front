@@ -86,7 +86,7 @@ export default function ShowPhoto() {
   };
 
   return (
-    <div>
+    <div className="showphoto-container">
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <div className={classes.paper}>

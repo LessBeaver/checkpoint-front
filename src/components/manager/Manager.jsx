@@ -3,6 +3,7 @@ import AddTrip from './AddTrip';
 import AddPhoto from './AddPhoto';
 import ShowPhoto from './ShowPhoto';
 import axios from 'axios';
+import './manager.css';
 
 export default function Manager() {
   const [name, setName] = useState('');
@@ -35,17 +36,19 @@ export default function Manager() {
   };
 
   return (
-    <div>
-      <AddTrip />
-      <AddPhoto
-        setTripName={setTripName}
-        setName={setName}
-        setImage={setImage}
-        name={name}
-        image={image}
-        tripName={tripName}
-        handleClickImage={handleClickImage}
-      />
+    <div className="manager-container">
+      <div className="add-container">
+        <AddTrip />
+        <AddPhoto
+          setTripName={setTripName}
+          setName={setName}
+          setImage={setImage}
+          name={name}
+          image={image}
+          tripName={tripName}
+          handleClickImage={handleClickImage}
+        />
+      </div>
       <ShowPhoto />
     </div>
   );

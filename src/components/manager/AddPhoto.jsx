@@ -58,66 +58,68 @@ export default function AddPhoto({
   }, []);
 
   return (
-    <Container component="main" maxWidth="xs">
-      <CssBaseline />
-      <div className={classes.paper}>
-        <Typography component="h1" variant="h5">
-          Ajouter des images
-        </Typography>
-        <form className={classes.form} onSubmit={e => handleClickImage(e)}>
-          <FormControl variant="outlined" className={classes.root}>
-            <InputLabel id="trip">Sélectionner un voyage</InputLabel>
-            <Select
+    <div className="component-container">
+      <Container component="main" maxWidth="xs">
+        <CssBaseline />
+        <div className={classes.paper}>
+          <Typography component="h1" variant="h5">
+            Ajouter des images
+          </Typography>
+          <form className={classes.form} onSubmit={e => handleClickImage(e)}>
+            <FormControl variant="outlined" className={classes.root}>
+              <InputLabel id="trip">Sélectionner un voyage</InputLabel>
+              <Select
+                id="name"
+                label="Nom du voyage"
+                name="name"
+                value={tripName}
+                onChange={e => setTripName(e.target.value)}
+              >
+                {trips.map(({ id_trip, name }) => (
+                  <MenuItem value={id_trip} key={id_trip}>
+                    {name}
+                  </MenuItem>
+                ))}
+              </Select>
+            </FormControl>
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
               id="name"
-              label="Nom du voyage"
+              label="Nom de l'image"
               name="name"
-              value={tripName}
-              onChange={e => setTripName(e.target.value)}
+              autoComplete="name"
+              autoFocus
+              value={name}
+              onChange={e => setName(e.target.value)}
+            />
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              id="picture_url"
+              label="Image de présentation"
+              name="picture_url"
+              autoComplete="picture_url"
+              autoFocus
+              value={image}
+              onChange={e => setImage(e.target.value)}
+            />
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              className={classes.submit}
             >
-              {trips.map(({ id_trip, name }) => (
-                <MenuItem value={id_trip} key={id_trip}>
-                  {name}
-                </MenuItem>
-              ))}
-            </Select>
-          </FormControl>
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            id="name"
-            label="Nom de l'image"
-            name="name"
-            autoComplete="name"
-            autoFocus
-            value={name}
-            onChange={e => setName(e.target.value)}
-          />
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            id="picture_url"
-            label="Image de présentation"
-            name="picture_url"
-            autoComplete="picture_url"
-            autoFocus
-            value={image}
-            onChange={e => setImage(e.target.value)}
-          />
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-          >
-            Ajouter
-          </Button>
-        </form>
-      </div>
-    </Container>
+              Ajouter
+            </Button>
+          </form>
+        </div>
+      </Container>
+    </div>
   );
 }

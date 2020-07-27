@@ -45,50 +45,52 @@ export default function AddTrip() {
   };
 
   return (
-    <Container component="main" maxWidth="xs">
-      <CssBaseline />
-      <div className={classes.paper}>
-        <Typography component="h1" variant="h5">
-          Ajouter un voyage
-        </Typography>
-        <form className={classes.form} onSubmit={e => handleClickImage(e)}>
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            id="name"
-            label="Nom du voyage"
-            name="name"
-            autoComplete="name"
-            autoFocus
-            value={name}
-            onChange={e => setNames(e.target.value)}
-          />
-          <TextField
-            variant="outlined"
-            margin="normal"
-            required
-            fullWidth
-            id="picture_url"
-            label="Image de présentation"
-            name="picture_url"
-            autoComplete="picture_url"
-            autoFocus
-            value={image}
-            onChange={e => setImages(e.target.value)}
-          />
-          <Button
-            type="submit"
-            fullWidth
-            variant="contained"
-            color="primary"
-            className={classes.submit}
-          >
-            Ajouter
-          </Button>
-        </form>
-      </div>
-    </Container>
+    <div className="component-container">
+      <Container component="main" maxWidth="xs">
+        <CssBaseline />
+        <div className={classes.paper}>
+          <Typography component="h1" variant="h5">
+            Ajouter un voyage
+          </Typography>
+          <form className={classes.form} onSubmit={e => handleClickImage(e)}>
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              id="name"
+              label="Nom du voyage"
+              name="name"
+              autoComplete="name"
+              autoFocus
+              value={name}
+              onChange={e => setNames(e.target.value)}
+            />
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              id="picture_url"
+              label="Image de présentation"
+              name="picture_url"
+              autoComplete="picture_url"
+              autoFocus
+              value={image}
+              onChange={e => setImages(e.target.value)}
+            />
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              color="primary"
+              className={classes.submit}
+            >
+              Ajouter
+            </Button>
+          </form>
+        </div>
+      </Container>
+    </div>
   );
 }

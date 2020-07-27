@@ -1,3 +1,29 @@
+/* MANAGER */
+
+.manager-container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.add-container {
+  display: flex;
+  flex-direction: row;
+  width: 80%;
+  margin: 30px auto;
+  justify-content: center;
+}
+
+.component-container {
+  padding: 30px;
+  margin: 15px;
+}
+
+.showphoto-container {
+  width: 100%;
+}
+
 /* SHOWPHOTO */
 
 .photo-container {
